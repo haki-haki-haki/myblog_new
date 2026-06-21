@@ -1,5 +1,12 @@
 [
     {
+        "id": "css-notes",
+        "created": "2026-06-21",
+        "modified": "2026-06-21",
+        "title": "CSS学习笔记",
+        "author": "haki"
+    },
+    {
         "id": "keil-stm32-contents-mismatch",
         "created": "2026-06-21",
         "modified": "2026-06-21",
