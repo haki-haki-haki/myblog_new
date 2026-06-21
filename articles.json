@@ -33,5 +33,12 @@
         "modified": "2026-06-21",
         "title": "测试自动部署",
         "author": "haki"
+    },
+    {
+        "id": "pid-advanced",
+        "created": "2026-06-21",
+        "modified": "2026-06-21",
+        "title": "PID_Advanced",
+        "author": "haki"
     }
 ]
