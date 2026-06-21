@@ -26,5 +26,12 @@
         "modified": "2026-06-20",
         "title": "数学公式与代码高亮",
         "author": "Admin"
+    },
+    {
+        "id": "auto-deploy-test",
+        "created": "2026-06-21",
+        "modified": "2026-06-21",
+        "title": "测试自动部署",
+        "author": "haki"
     }
 ]
