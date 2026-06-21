@@ -27,7 +27,7 @@ flowchart LR
 
 ### 电机化学方程
 
-<img src="file:///C:\Users\欧俊\AppData\Local\Temp\QQ_1781074560957.png" alt="img" style="zoom: 67%;" />
+![电机化学方程](./assets/images/QQ_1781074560957.png)
 $$
 \frac{d i_a(t)}{dt} + R_a i_a(t) = u_a(t) - K_e \omega(t)
 $$
@@ -43,7 +43,7 @@ $(K_e \omega(t))$ 为电机转动产生的反电动势
 
 ### 电机机械方程
 
-<img src="file:///C:\Users\欧俊\AppData\Local\Temp\QQ_1781074817134.png" alt="img" style="zoom: 67%;" />
+![电机机械方程](./assets/images/QQ_1781074817134.png)
 $$
 J \frac{d\omega(t)}{dt} + B \omega(t) = K_t i_a(t) - T_L
 $$
@@ -97,7 +97,7 @@ $$
 
 输入：电压 			输出：角速度
 
-![img](file:///C:\Users\欧俊\AppData\Local\Temp\QQ_1781076305953.png)
+![传递函数结构图](./assets/images/QQ_1781076305953.png)
 $$
 \begin{cases}
 (L_a s + R_a) I_a(s) \triangleq U_a(s) - K_e \omega(s) \quad  \\
@@ -114,7 +114,7 @@ I_a(s) = \frac{Js + B}{K_t} \omega(s)
 \\
 \frac{\omega(s)}{U_a(s)} = \frac{K_t}{(L_a s + R_a)(Js + B) + K_t K_e}
 $$
-<img src="file:///C:\Users\欧俊\AppData\Local\Temp\QQ_1781076705000.png" alt="img" style="zoom: 50%;" />
+![传递函数化简](./assets/images/QQ_1781076705000.png)
 
 传递函数：
 $$
@@ -175,8 +175,8 @@ flowchart LR
     Wout -.-> S["MPU6050 传感器"]
 ```
 
-![img](file:///C:\Users\欧俊\AppData\Local\Temp\QQ_1781238168698.png)
+![串级PID框图1](./assets/images/QQ_1781238168698.png)
 
-![img](file:///C:\Users\欧俊\AppData\Local\Temp\QQ_1781238203334.png)
+![串级PID框图2](./assets/images/QQ_1781238203334.png)
 
 ### 代码实例
