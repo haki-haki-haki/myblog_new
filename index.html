@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+    <title>MyBlog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css"
+        id="markdown-style">
+    <link rel="stylesheet" href="./assets/style/global.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <div id="page-mask"></div>
+
+    <nav>
+        <div class="nav-left">
+            <button class="menu-toggle mobile-only" id="menu-btn" aria-label="打开菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <a href="#" class="nav-logo" data-path="index">MyBlog</a>
+            <div class="nav-links desktop-only">
+                <a href="#" data-path="about">关于</a>
+                <a href="#" data-path="blog">博客</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <button id="theme-toggle" class="theme-switch-btn" aria-label="切换主题">
+                <span class="material-icons" id="theme-icon">light_mode</span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="path-nav" id="path-nav"></div>
+
+    <div class="content-container">
+        <div id="main-content" class="markdown-body"></div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Copyright &copy; 2026 MyBlog &middot; All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@14.0.0/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+    <script>
+        const SITE_CONFIG = {
+            PAGE_ROOT: './page/',
+            DEFAULT_PAGE: 'index',
+            IN_TITLE: "✍️ MyBlog",
+            OUT_TITLE: "👋 下次再来",
+            LIGHT_STYLE: 'https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css',
+            DARK_STYLE: 'https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-dark.min.css'
+        };
+    </script>
+    <script src="./assets/script/global.js"></script>
+</body>
+
+</html>
