@@ -1,5 +1,12 @@
 [
     {
+        "id": "zero-offset-calibration",
+        "created": "2026-06-21",
+        "modified": "2026-06-21",
+        "title": "零偏校准原理学习",
+        "author": "haki"
+    },
+    {
         "id": "kalman-filter-notes",
         "created": "2026-06-21",
         "modified": "2026-06-21",
