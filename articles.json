@@ -1,5 +1,12 @@
 [
     {
+        "id": "keil-stm32-contents-mismatch",
+        "created": "2026-06-21",
+        "modified": "2026-06-21",
+        "title": "Keil STM32烧录Contents mismatch校验失败 终极学习笔记",
+        "author": "haki"
+    },
+    {
         "id": "zero-offset-calibration",
         "created": "2026-06-21",
         "modified": "2026-06-21",
