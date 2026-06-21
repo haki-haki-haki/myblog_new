@@ -1,5 +1,12 @@
 [
     {
+        "id": "kalman-filter-notes",
+        "created": "2026-06-21",
+        "modified": "2026-06-21",
+        "title": "卡尔曼滤波学习笔记",
+        "author": "haki"
+    },
+    {
         "id": "dm-h3510-motor",
         "created": "2026-06-21",
         "modified": "2026-06-21",
