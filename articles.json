@@ -1,5 +1,13 @@
 [
     {
+        "id": "cpp-template-vector",
+        "created": "2026-06-24",
+        "modified": "2026-06-24",
+        "title": "C++ 模板与 Vector 学习笔记",
+        "author": "haki",
+        "tags": ["C++", "模板", "STL", "学习笔记"]
+    },
+    {
         "id": "css-notes",
         "created": "2026-06-21",
         "modified": "2026-06-21",
