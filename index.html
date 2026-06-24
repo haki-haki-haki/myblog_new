@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
-    <title>MyBlog</title>
+    <title>haki's Blog</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css"
         id="markdown-style">
     <link rel="stylesheet" href="./assets/style/global.css">
@@ -22,7 +22,7 @@
                 <span></span>
                 <span></span>
             </button>
-            <a href="#" class="nav-logo" data-path="index">MyBlog</a>
+            <a href="#" class="nav-logo" data-path="index">haki · Blog</a>
             <div class="nav-links desktop-only">
                 <a href="#" data-path="about">关于</a>
                 <a href="#" data-path="blog">博客</a>
@@ -37,13 +37,22 @@
 
     <div class="path-nav" id="path-nav"></div>
 
+    <!-- Xiaohei illustration area (injected by JS) -->
+    <div id="xiaohei-top"></div>
+
     <div class="content-container">
         <div id="main-content" class="markdown-body"></div>
     </div>
 
+    <!-- Xiaohei illustration area (injected by JS) -->
+    <div id="xiaohei-bottom"></div>
+
     <footer>
         <div class="footer-content">
-            <p>Copyright &copy; 2026 MyBlog &middot; All Rights Reserved</p>
+            <p>Copyright &copy; 2026 haki's Blog &middot; All Rights Reserved</p>
+            <p style="margin-top:0.3rem;">
+                <span class="sketch-note">纯白 · 手绘 · 怪诞 · 留白</span>
+            </p>
         </div>
     </footer>
 
@@ -65,10 +74,15 @@
         const SITE_CONFIG = {
             PAGE_ROOT: './page/',
             DEFAULT_PAGE: 'index',
-            IN_TITLE: "✍️ MyBlog",
+            IN_TITLE: "✍️ haki's Blog",
             OUT_TITLE: "👋 下次再来",
             LIGHT_STYLE: 'https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css',
-            DARK_STYLE: 'https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-dark.min.css'
+            DARK_STYLE: 'https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-dark.min.css',
+            XIAOHEI_IMAGES: {
+                hero: './assets/images/xiaohei-hero.jpg',
+                about: './assets/images/xiaohei-about.jpg',
+                blog: './assets/images/xiaohei-blog.jpg'
+            }
         };
     </script>
     <script src="./assets/script/global.js"></script>
