@@ -4,83 +4,95 @@
         "created": "2026-06-21",
         "modified": "2026-06-21",
         "title": "CSS学习笔记",
-        "author": "haki"
+        "author": "haki",
+        "tags": ["CSS", "前端", "学习笔记"]
     },
     {
         "id": "keil-stm32-contents-mismatch",
         "created": "2026-06-21",
         "modified": "2026-06-21",
         "title": "Keil STM32烧录Contents mismatch校验失败 终极学习笔记",
-        "author": "haki"
+        "author": "haki",
+        "tags": ["STM32", "Keil", "嵌入式", "踩坑"]
     },
     {
         "id": "zero-offset-calibration",
         "created": "2026-06-21",
         "modified": "2026-06-21",
         "title": "零偏校准原理学习",
-        "author": "haki"
+        "author": "haki",
+        "tags": ["嵌入式", "校准", "学习笔记"]
     },
     {
         "id": "kalman-filter-notes",
         "created": "2026-06-21",
         "modified": "2026-06-21",
         "title": "卡尔曼滤波学习笔记",
-        "author": "haki"
+        "author": "haki",
+        "tags": ["数学", "滤波", "学习笔记"]
     },
     {
         "id": "dm-h3510-motor",
         "created": "2026-06-21",
         "modified": "2026-06-21",
         "title": "DM-H3510 轮毂电机",
-        "author": "haki"
+        "author": "haki",
+        "tags": ["嵌入式", "电机", "硬件"]
     },
     {
         "id": "tulun-huahongdao",
         "created": "2026-06-21",
         "modified": "2026-06-21",
         "title": "图论：数字华容道不可解问题初探",
-        "author": "haki"
+        "author": "haki",
+        "tags": ["数学", "图论", "算法"]
     },
     {
         "id": "hello-world",
         "created": "2026-06-01",
         "modified": "2026-06-01",
         "title": "Hello World",
-        "author": "Admin"
+        "author": "Admin",
+        "tags": ["随笔"]
     },
     {
         "id": "markdown-guide",
         "created": "2026-06-10",
         "modified": "2026-06-10",
         "title": "Markdown 写作指南",
-        "author": "Admin"
+        "author": "Admin",
+        "tags": ["Markdown", "写作", "指南"]
     },
     {
         "id": "getting-started",
         "created": "2026-06-15",
         "modified": "2026-06-15",
         "title": "博客搭建笔记",
-        "author": "Admin"
+        "author": "Admin",
+        "tags": ["博客", "搭建", "GitHub"]
     },
     {
         "id": "math-formula",
         "created": "2026-06-20",
         "modified": "2026-06-20",
         "title": "数学公式与代码高亮",
-        "author": "Admin"
+        "author": "Admin",
+        "tags": ["数学", "Markdown", "前端"]
     },
     {
         "id": "auto-deploy-test",
         "created": "2026-06-21",
         "modified": "2026-06-21",
         "title": "测试自动部署",
-        "author": "haki"
+        "author": "haki",
+        "tags": ["GitHub", "部署", "工具"]
     },
     {
         "id": "pid-advanced",
         "created": "2026-06-21",
         "modified": "2026-06-21",
         "title": "PID_Advanced",
-        "author": "haki"
+        "author": "haki",
+        "tags": ["嵌入式", "PID", "控制"]
     }
 ]
