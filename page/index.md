@@ -1,13 +1,14 @@
 # Hello，我是 haki 👋
 
-大一学生，计算机专业在读。
+大一学生，计算机专业在读，也是一名<span class="sk-ann red">RMer</span> 🤖。
 
-这个博客记录我的 <span class="sk-ann orange">学习笔记</span>、<span class="sk-ann red">踩坑经历</span>
-和偶尔冒出来的<span class="sk-ann blue">怪想法</span>。
+这个博客记录我的 <span class="sk-ann orange">学习笔记</span>、<span class="sk-ann red">踩坑经历</span>、
+<span class="sk-ann blue">比赛日常</span>和偶尔冒出来的<span class="sk-ann orange">怪想法</span>。
 
 ## 最近在干嘛
 
 - 📚 啃《数据结构》《操作系统》
+- 🤖 搞 RoboMaster，调车调麦轮调 PID
 - 🔧 折腾 STM32 和嵌入式开发
 - 📝 把学到的东西写成 Markdown
 - 🏸 和朋友打羽毛球
