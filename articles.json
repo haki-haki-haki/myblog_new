@@ -1,5 +1,13 @@
 [
     {
+        "id": "camera-baidu-api",
+        "created": "2026-06-24",
+        "modified": "2026-06-24",
+        "title": "摄像头与百度API识别代码讲解",
+        "author": "haki",
+        "tags": ["Qt", "百度API", "摄像头", "车牌识别", "项目"]
+    },
+    {
         "id": "cpp-template-vector",
         "created": "2026-06-24",
         "modified": "2026-06-24",
