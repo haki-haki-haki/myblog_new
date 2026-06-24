@@ -1,5 +1,12 @@
 [
     {
+        "id": "duotai",
+        "created": "2026-06-21",
+        "modified": "2026-06-21",
+        "title": "多态",
+        "author": "haki"
+    },
+    {
         "id": "camera-baidu-api",
         "created": "2026-06-24",
         "modified": "2026-06-24",
