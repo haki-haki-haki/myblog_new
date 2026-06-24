@@ -1,10 +1,11 @@
 [
     {
-        "id": "duotai",
-        "created": "2026-06-21",
-        "modified": "2026-06-21",
-        "title": "多态",
-        "author": "haki"
+        "id": "cpp-polymorphism",
+        "created": "2026-06-24",
+        "modified": "2026-06-24",
+        "title": "C++ 多态（模板·重载·虚函数）",
+        "author": "haki",
+        "tags": ["C++", "多态", "模板", "虚函数", "学习笔记"]
     },
     {
         "id": "camera-baidu-api",
