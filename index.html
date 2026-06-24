@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
     <title>haki's Blog</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css"
-        id="markdown-style">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css" id="markdown-style">
     <link rel="stylesheet" href="./assets/style/global.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-
 <body>
     <div id="page-mask"></div>
-
     <nav>
         <div class="nav-left">
-            <button class="menu-toggle mobile-only" id="menu-btn" aria-label="打开菜单">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <button class="menu-toggle mobile-only" id="menu-btn" aria-label="打开菜单"><span></span><span></span><span></span></button>
             <a href="#" class="nav-logo" data-path="index">haki · Blog</a>
             <div class="nav-links desktop-only">
                 <a href="#" data-path="about">关于</a>
@@ -34,47 +26,29 @@
             </button>
         </div>
     </nav>
-
     <div class="path-nav" id="path-nav"></div>
-
-    <!-- Xiaohei illustration area (injected by JS) -->
     <div id="xiaohei-top"></div>
-
-    <div class="content-container">
-        <div id="main-content" class="markdown-body"></div>
-    </div>
-
-    <!-- Xiaohei illustration area (injected by JS) -->
+    <div class="content-container"><div id="main-content" class="markdown-body"></div></div>
     <div id="xiaohei-bottom"></div>
-
     <footer>
         <div class="footer-content">
             <p>Copyright &copy; 2026 haki's Blog &middot; All Rights Reserved</p>
-            <p class="footer-quote">代码会写完，泡面会吃完，DDL 会过去。</p>
+            <p class="footer-quote">代码会写完，泡面会吃完，高铁会到站。</p>
             <p><span class="sketch-note">纯白 · 手绘 · 怪诞 · 留白</span></p>
         </div>
     </footer>
-
     <script>
         window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: true
-            },
-            options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-            }
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+            options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
         };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/marked@14.0.0/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
     <script>
         const SITE_CONFIG = {
-            PAGE_ROOT: './page/',
-            DEFAULT_PAGE: 'index',
-            IN_TITLE: "✍️ haki's Blog",
-            OUT_TITLE: "👋 下次再来",
+            PAGE_ROOT: './page/', DEFAULT_PAGE: 'index',
+            IN_TITLE: "✍️ haki's Blog", OUT_TITLE: "👋 下次再来",
             LIGHT_STYLE: 'https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css',
             DARK_STYLE: 'https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-dark.min.css',
             XIAOHEI_IMAGES: {
@@ -85,11 +59,16 @@
                 coding:  './assets/images/xiaohei-debug.jpg',
                 reading: './assets/images/xiaohei-reading.jpg',
                 noodles: './assets/images/xiaohei-noodles.jpg',
-                exercise:'./assets/images/xiaohei-exercise.jpg'
+                exercise:'./assets/images/xiaohei-exercise.jpg',
+                badminton:'./assets/images/xiaohei-badminton.jpg',
+                running:  './assets/images/xiaohei-running.jpg',
+                walking:  './assets/images/xiaohei-walking.jpg',
+                travel:   './assets/images/xiaohei-travel.jpg',
+                train:    './assets/images/xiaohei-train.jpg',
+                classroom:'./assets/images/xiaohei-classroom.jpg'
             }
         };
     </script>
     <script src="./assets/script/global.js"></script>
 </body>
-
 </html>
