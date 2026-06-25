@@ -1,5 +1,13 @@
 [
     {
+        "id": "cpp-inheritance",
+        "created": "2026-06-25",
+        "modified": "2026-06-25",
+        "title": "C++ 继承与派生（public/private/protected继承·虚基类）",
+        "author": "haki",
+        "tags": ["C++", "继承", "派生", "虚基类", "学习笔记"]
+    },
+    {
         "id": "cpp-polymorphism",
         "created": "2026-06-24",
         "modified": "2026-06-24",

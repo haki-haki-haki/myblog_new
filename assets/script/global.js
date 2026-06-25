@@ -70,20 +70,38 @@ function injectXiaohei(topEl, bottomEl, displayPath) {
         return;
     }
 
-    // ── 文章页：随机日常小图 ──
-    const articlePicks = [imgs.badminton, imgs.running, imgs.walking, imgs.noodles, imgs.coding, imgs.classroom, imgs.travel, imgs.train];
-    const pick = articlePicks.filter(Boolean)[Math.floor(Math.random() * articlePicks.length)];
-    if (pick) {
+    // ── 文章页：按文章匹配专属插图，未匹配则随机 ──
+    const articleImgMap = {
+        'blog/cpp-polymorphism':  { src: imgs.cppcode,  cap: '— 小黑也在琢磨多态' },
+        'blog/cpp-inheritance':   { src: imgs.inheritance, cap: '— 小黑画了个菱形继承' },
+        'blog/cpp-template-vector': { src: imgs.cppcode,  cap: '— 小黑在敲模板' },
+        'blog/camera-baidu-api':  { src: imgs.coding,   cap: '— 小黑在调摄像头' }
+    };
+    const matched = articleImgMap[cp];
+    if (matched && matched.src) {
         bottomEl.innerHTML =
         `<div style="max-width:960px;margin:2rem auto 0;padding:0 20px;">
           <div class="sketch-divider"><span class="l"></span><span class="d"></span><span class="l"></span></div>
           <div class="xiaohei-hero" style="padding-top:0.3rem;">
-            <img src="${pick}" alt="小黑日常" style="max-width:420px;">
-            <div class="cap" style="color:var(--aorange,#E8903A);">— 小黑也在认真过日子</div>
+            <img src="${matched.src}" alt="小黑配图" style="max-width:420px;">
+            <div class="cap" style="color:var(--aorange,#E8903A);">${matched.cap}</div>
           </div>
         </div>`;
     } else {
-        bottomEl.innerHTML = `<div class="sketch-divider"><span class="l"></span><span class="d"></span><span class="l"></span></div>`;
+        const articlePicks = [imgs.badminton, imgs.running, imgs.walking, imgs.noodles, imgs.coding, imgs.cppcode, imgs.classroom, imgs.travel, imgs.train, imgs.inheritance];
+        const pick = articlePicks.filter(Boolean)[Math.floor(Math.random() * articlePicks.length)];
+        if (pick) {
+            bottomEl.innerHTML =
+            `<div style="max-width:960px;margin:2rem auto 0;padding:0 20px;">
+              <div class="sketch-divider"><span class="l"></span><span class="d"></span><span class="l"></span></div>
+              <div class="xiaohei-hero" style="padding-top:0.3rem;">
+                <img src="${pick}" alt="小黑日常" style="max-width:420px;">
+                <div class="cap" style="color:var(--aorange,#E8903A);">— 小黑也在认真过日子</div>
+              </div>
+            </div>`;
+        } else {
+            bottomEl.innerHTML = `<div class="sketch-divider"><span class="l"></span><span class="d"></span><span class="l"></span></div>`;
+        }
     }
 }
 
