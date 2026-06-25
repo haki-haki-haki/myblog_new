@@ -1,5 +1,13 @@
 [
     {
+        "id": "dji-dt7-dma",
+        "created": "2026-06-25",
+        "modified": "2026-06-25",
+        "title": "大疆DT7遥控器与STM32H7 DMA双缓冲区接收学习笔记",
+        "author": "haki",
+        "tags": ["大疆", "DT7", "STM32", "DMA", "嵌入式", "RM"]
+    },
+    {
         "id": "cpp-inheritance",
         "created": "2026-06-25",
         "modified": "2026-06-25",

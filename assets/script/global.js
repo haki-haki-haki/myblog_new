@@ -74,6 +74,7 @@ function injectXiaohei(topEl, bottomEl, displayPath) {
     const articleImgMap = {
         'blog/cpp-polymorphism':  { src: imgs.cppcode,  cap: '— 小黑也在琢磨多态' },
         'blog/cpp-inheritance':   { src: imgs.inheritance, cap: '— 小黑画了个菱形继承' },
+        'blog/dji-dt7-dma':       { src: imgs.drone,      cap: '— 小黑在玩无人机' },
         'blog/cpp-template-vector': { src: imgs.cppcode,  cap: '— 小黑在敲模板' },
         'blog/camera-baidu-api':  { src: imgs.coding,   cap: '— 小黑在调摄像头' }
     };
