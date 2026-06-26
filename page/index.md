@@ -19,6 +19,7 @@
 
 - [GitHub](https://github.com/haki-haki-haki) — 我的代码仓库
 - [Gitee](https://gitee.com/spirit-guard/haki_learning_playing) — 项目仓库
+- [大一C++课设](https://pan.baidu.com/s/1CQh4z2uggvAghy9nZIl4ug?pwd=0609) — 提取码：0609
 
 ---
 
