@@ -74,6 +74,7 @@ function injectXiaohei(topEl, bottomEl, displayPath) {
     const articleImgMap = {
         'blog/cpp-polymorphism':  { src: imgs.cppcode,  cap: '— 小黑也在琢磨多态' },
         'blog/cpp-inheritance':   { src: imgs.inheritance, cap: '— 小黑画了个菱形继承' },
+        'blog/cpp-array-pointer': { src: imgs.pointer,    cap: '— 小黑在画指针箭头' },
         'blog/dji-dt7-dma':       { src: imgs.drone,      cap: '— 小黑在玩无人机' },
         'blog/cpp-template-vector': { src: imgs.cppcode,  cap: '— 小黑在敲模板' },
         'blog/camera-baidu-api':  { src: imgs.coding,   cap: '— 小黑在调摄像头' }
@@ -150,11 +151,14 @@ function postProcess(container, currentPath) {
     if (currentPath.replace(/\/$/, '') === 'index') injectIndexExtras(container);
 }
 
-/* ═══════════ 首页：日常快照 + 签名卡 ═══════════ */
-function injectIndexExtras(container) {
+/* ═══════════ 首页：笔记分区 + 日常快照 + 签名卡 ═══════════ */
+async function injectIndexExtras(container) {
     const imgs = I();
     const h2s = container.querySelectorAll('h2');
     h2s.forEach(h2 => {
+        if (h2.textContent.includes('笔记分区') || h2.textContent.includes('分区')) {
+            renderTagZone(h2);
+        }
         if (h2.textContent.includes('Links') || h2.textContent.includes('链接')) {
             const dailyHTML =
             `<h2 style="margin-top:2.5rem;">日常快照</h2>
@@ -184,21 +188,97 @@ function injectIndexExtras(container) {
     }
 }
 
+/* ═══════════ 笔记分区：标签配图卡片 ═══════════ */
+async function renderTagZone(anchorH2) {
+    const imgs = I();
+    let articles = [];
+    try {
+        const res = await fetch('./articles.json');
+        articles = await res.json();
+    } catch (e) { return; }
+
+    // 统计标签文章数
+    const tagCounts = {};
+    articles.forEach(a => { (a.tags || []).forEach(t => { tagCounts[t] = (tagCounts[t] || 0) + 1; }); });
+
+    // 主要分区定义（标签 -> 配图映射）
+    const tagCards = [
+        { tag: 'C++',       img: imgs.cppcode,    color: 'red'    },
+        { tag: '嵌入式',     img: imgs.coding,     color: 'blue'   },
+        { tag: '数学',       img: imgs.classroom,  color: 'orange' },
+        { tag: '项目',       img: imgs.drone,      color: 'red'    },
+        { tag: '前端',       img: imgs.blog,       color: 'blue'   },
+        { tag: '学习笔记',   img: imgs.reading,    color: 'orange' }
+    ];
+
+    let html = '<div class="tag-zone-grid">';
+    tagCards.forEach(c => {
+        const count = tagCounts[c.tag] || 0;
+        if (count === 0) return;
+        html += `
+          <a href="#" class="tag-zone-card" data-tag="${c.tag}" data-path="blog">
+            <div class="tzc-img-wrap"><img src="${c.img}" alt="${c.tag}" loading="lazy"></div>
+            <div class="tzc-body">
+              <span class="tzc-tag sk-ann ${c.color}">${c.tag}</span>
+              <span class="tzc-count">${count} 篇</span>
+            </div>
+          </a>`;
+    });
+    html += '</div>';
+    anchorH2.insertAdjacentHTML('afterend', html);
+
+    // 绑定点击：跳转到博客页并带 tag 参数
+    anchorH2.parentElement.querySelectorAll('.tag-zone-card').forEach(card => {
+        card.addEventListener('click', e => {
+            e.preventDefault();
+            const tag = card.getAttribute('data-tag');
+            const url = new URL(window.location);
+            url.searchParams.set('p', 'blog');
+            url.searchParams.set('tag', tag);
+            window.history.pushState({ path: 'blog', tag }, '', url);
+            loadPage('blog');
+        });
+    });
+}
+
 /* ═══════════ 博客列表：标签云 + 时间线 ═══════════ */
 async function renderBlogList(container) {
     try {
         const res = await fetch('./articles.json');
-        const articles = await res.json();
+        let articles = await res.json();
         articles.sort((a, b) => new Date(b.created) - new Date(a.created));
+
+        // 读取 URL tag 过滤参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const filterTag = urlParams.get('tag');
 
         const tagCounts = {};
         articles.forEach(a => { (a.tags || []).forEach(t => { tagCounts[t] = (tagCounts[t] || 0) + 1; }); });
+
+        // 如果有标签过滤，先过滤文章
+        let filtered = articles;
+        if (filterTag) {
+            filtered = articles.filter(a => (a.tags || []).includes(filterTag));
+        }
+
         const topTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
         let tagHTML = '<div class="tag-cloud">';
-        topTags.forEach(([tag, count]) => { tagHTML += `<span class="tcloud-tag">${tag} ×${count}</span>`; });
+        topTags.forEach(([tag, count]) => {
+            const active = tag === filterTag ? ' active' : '';
+            tagHTML += `<span class="tcloud-tag${active}" data-tag="${tag}">${tag} ×${count}</span>`;
+        });
         tagHTML += '</div>';
 
-        const groups = articles.reduce((acc, a) => {
+        // 标签过滤提示栏
+        let filterBar = '';
+        if (filterTag) {
+            filterBar = `<div class="tag-filter-bar">
+                <span>当前筛选：<strong class="sk-ann red">${filterTag}</strong> · ${filtered.length} 篇</span>
+                <a href="#" class="clear-filter" data-path="blog">清除筛选</a>
+            </div>`;
+        }
+
+        const groups = filtered.reduce((acc, a) => {
             const year = new Date(a.created).getFullYear();
             if (!acc[year]) acc[year] = [];
             acc[year].push(a);
@@ -216,7 +296,34 @@ async function renderBlogList(container) {
             });
             listHTML += '</ul>';
         });
-        container.innerHTML += tagHTML + listHTML + '</div>';
+        if (Object.keys(groups).length === 0) {
+            listHTML += '<p style="text-align:center;color:var(--light-muted);margin:2rem 0;">这个主题下还没有文章 😅</p>';
+        }
+        container.innerHTML += filterBar + tagHTML + listHTML + '</div>';
+
+        // 绑定标签云点击
+        container.querySelectorAll('.tcloud-tag').forEach(tagEl => {
+            tagEl.addEventListener('click', () => {
+                const tag = tagEl.getAttribute('data-tag');
+                const url = new URL(window.location);
+                url.searchParams.set('p', 'blog');
+                url.searchParams.set('tag', tag);
+                window.history.pushState({ path: 'blog', tag }, '', url);
+                loadPage('blog');
+            });
+        });
+
+        // 绑定清除筛选
+        const clearBtn = container.querySelector('.clear-filter');
+        if (clearBtn) {
+            clearBtn.addEventListener('click', e => {
+                e.preventDefault();
+                const url = new URL(window.location);
+                url.searchParams.delete('tag');
+                window.history.pushState({ path: 'blog' }, '', url);
+                loadPage('blog');
+            });
+        }
     } catch (e) { container.innerHTML += '<p>无法加载文章列表</p>'; }
 }
 

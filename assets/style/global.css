@@ -183,7 +183,29 @@ body.dark-mode .timeline-item::before { border-color: var(--dark-bg); }
 .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 1.8rem; }
 .tag-cloud .tcloud-tag { font-family: 'Sketch', cursive; font-size: 0.72rem; padding: 3px 12px; border: 1px solid var(--light-border); border-radius: 20px; color: var(--light-muted); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
 .tag-cloud .tcloud-tag:hover { border-color: var(--aorange); color: var(--aorange); }
+.tag-cloud .tcloud-tag.active { background: var(--ared); color: #fff; border-color: var(--ared); }
 body.dark-mode .tag-cloud .tcloud-tag { border-color: var(--dark-border); color: #8b949e; }
+body.dark-mode .tag-cloud .tcloud-tag.active { background: var(--ared); color: #fff; }
+
+/* ═══ TAG FILTER BAR ═══ */
+.tag-filter-bar { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 1rem; margin: 0.5rem 0 1rem; border: 1px dashed var(--aorange); border-radius: 4px; font-size: 0.85rem; }
+.tag-filter-bar .clear-filter { font-family: 'Sketch', cursive; color: var(--aorange); cursor: pointer; }
+.tag-filter-bar .clear-filter:hover { color: var(--ared); }
+body.dark-mode .tag-filter-bar { border-color: var(--aorange); }
+
+/* ═══ TAG ZONE — 首页笔记分区配图卡片 ═══ */
+.tag-zone-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin: 1.5rem 0; }
+.tag-zone-card { display: block; border: 1px solid var(--light-border); border-radius: 4px; overflow: hidden; text-decoration: none; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; cursor: pointer; }
+.tag-zone-card:hover { transform: translateY(-3px); border-color: var(--aorange); box-shadow: 0 6px 20px rgba(0,0,0,0.06); text-decoration: none; }
+body.dark-mode .tag-zone-card { border-color: var(--dark-border); }
+body.dark-mode .tag-zone-card:hover { border-color: var(--aorange); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+.tag-zone-card .tzc-img-wrap { width: 100%; overflow: hidden; }
+.tag-zone-card .tzc-img-wrap img { width: 100%; display: block; aspect-ratio: 16/10; object-fit: cover; transition: transform 0.3s; }
+.tag-zone-card:hover .tzc-img-wrap img { transform: scale(1.04); }
+.tag-zone-card .tzc-body { padding: 0.7rem 1rem; display: flex; align-items: center; justify-content: space-between; }
+.tag-zone-card .tzc-tag { font-size: 1rem; }
+.tag-zone-card .tzc-count { font-family: 'Sketch', cursive; font-size: 0.75rem; color: var(--light-muted); }
+body.dark-mode .tag-zone-card .tzc-count { color: #8b949e; }
 
 /* ═══ XIAOHEI ICON (small avatar dot) ═══ */
 .xiaohei-dot {
@@ -209,7 +231,8 @@ body.dark-mode .xiaohei-dot::before { background: #1a1a1a; }
   .scene-row { grid-template-columns: 1fr; gap: 1rem; }
   .scene-row.img-right .scene-img-col { order: 1; }
   .scene-row.img-right .scene-txt-col { order: 2; }
+  .tag-zone-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 440px) {
-  .daily-grid, .comic-gallery { grid-template-columns: 1fr; }
+  .daily-grid, .comic-gallery, .tag-zone-grid { grid-template-columns: 1fr; }
 }

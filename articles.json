@@ -1,5 +1,13 @@
 [
     {
+        "id": "cpp-array-pointer",
+        "created": "2026-06-27",
+        "modified": "2026-06-27",
+        "title": "C++ 数组、指针与字符串学习笔记",
+        "author": "haki",
+        "tags": ["C++", "数组", "指针", "字符串", "学习笔记"]
+    },
+    {
         "id": "dji-dt7-dma",
         "created": "2026-06-25",
         "modified": "2026-06-25",
