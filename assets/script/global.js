@@ -415,8 +415,9 @@ function renderMusicPage(container) {
             </div>`
         ).join('');
 
+        const catStr = s.tags.join(' ');
         html += `
-        <div class="music-singer-card" data-idx="${i}">
+        <div class="music-singer-card" data-idx="${i}" data-cats="${catStr}">
             <div class="msc-header">
                 <div class="msc-avatar-wrap">
                     <img src="${s.avatar}" alt="${s.name}" class="msc-avatar" loading="lazy">
@@ -454,20 +455,51 @@ function renderMusicPage(container) {
 
     container.innerHTML += html;
 
+    // 空状态提示
+    const grid = container.querySelector('.music-singer-grid');
+    let emptyTip = null;
+
     // 绑定分类标签点击
     container.querySelectorAll('.mcat-tag').forEach(tag => {
         tag.addEventListener('click', () => {
             container.querySelectorAll('.mcat-tag').forEach(t => t.classList.remove('active'));
             tag.classList.add('active');
-            // 简单过滤动画
+
+            const cat = tag.getAttribute('data-mcat');
+            let visibleCount = 0;
+
             container.querySelectorAll('.music-singer-card').forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(10px)';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 150);
+                const cats = card.getAttribute('data-cats') || '';
+                const match = cat === '全部' || cats.includes(cat);
+
+                if (match) {
+                    card.style.display = '';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px)';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50 + visibleCount * 80);
+                    visibleCount++;
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px)';
+                    setTimeout(() => { card.style.display = 'none'; }, 200);
+                }
             });
+
+            // 空状态提示
+            if (visibleCount === 0) {
+                if (!emptyTip) {
+                    emptyTip = document.createElement('p');
+                    emptyTip.className = 'music-empty-tip';
+                    emptyTip.innerHTML = '<span style="color:var(--light-muted);text-align:center;display:block;padding:3rem 0;font-family:Sketch,cursive;">这个分类下还没有歌手 😅<br><span style="font-size:0.75rem;">持续更新中...</span></span>';
+                    grid.appendChild(emptyTip);
+                }
+                emptyTip.style.display = 'block';
+            } else if (emptyTip) {
+                emptyTip.style.display = 'none';
+            }
         });
     });
 
