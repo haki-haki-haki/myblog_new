@@ -52,6 +52,17 @@ function injectXiaohei(topEl, bottomEl, displayPath) {
         return;
     }
 
+    // ── 音乐页：顶部插画 ──
+    if (cp === 'music') {
+        topEl.innerHTML = '';
+        bottomEl.innerHTML =
+        `<div style="max-width:960px;margin:1rem auto 0;padding:0 20px;">
+          <div class="sketch-divider"><span class="l"></span><span class="d"></span><span class="l"></span></div>
+          <div class="xiaohei-hero"><img src="${imgs.reading}" alt="小黑听歌"><div class="cap">— 小黑也在单曲循环</div></div>
+        </div>`;
+        return;
+    }
+
     // ── 博客归档页：顶部漫画式插图 + 底部场景 ──
     if (cp === 'blog') {
         topEl.innerHTML =
@@ -149,6 +160,7 @@ async function loadPage(rawPath) {
 function postProcess(container, currentPath) {
     if (currentPath.replace(/\/$/, '') === 'blog') renderBlogList(container);
     if (currentPath.replace(/\/$/, '') === 'index') injectIndexExtras(container);
+    if (currentPath.replace(/\/$/, '') === 'music') renderMusicPage(container);
 }
 
 /* ═══════════ 首页：笔记分区 + 日常快照 + 签名卡 ═══════════ */
@@ -342,6 +354,142 @@ function renderPathNav(displayPath) {
     if (nav) nav.innerHTML = html;
 }
 
+/* ═══════════ 音乐页：网易云风格歌手展示 ═══════════ */
+function renderMusicPage(container) {
+    const imgs = I();
+
+    // 歌手数据
+    const singers = [
+        {
+            name: '孙燕姿', en: 'Stefanie Sun', type: '华语女歌手',
+            avatar: imgs['singer-stefanie'],
+            tags: ['华语', '女歌手', '流行'],
+            songs: ['天黑黑', '遇见', '绿光', '开始懂了', '逆光'],
+            mood: '🎧 听燕姿的歌，像在经历一场温柔的暴雨',
+            desc: '新加坡华语流行乐坛天后，独特的嗓音和充沛的情感表达让她成为一代人的青春记忆。'
+        },
+        {
+            name: '林俊杰', en: 'JJ Lin', type: '华语男歌手',
+            avatar: imgs['singer-jj'],
+            tags: ['华语', '男歌手', '流行'],
+            songs: ['江南', '修炼爱情', '她说', '可惜没如果', '不为谁而作的歌'],
+            mood: '🎹 JJ的每一首歌都是一个小宇宙',
+            desc: '新加坡华语流行音乐创作歌手，行走的CD，现场演唱实力天花板级别。'
+        },
+        {
+            name: '赵雷', en: 'Zhao Lei', type: '民谣歌手',
+            avatar: imgs['singer-zhao'],
+            tags: ['华语', '民谣', '创作'],
+            songs: ['成都', '南方姑娘', '画', '理想', '鼓楼'],
+            mood: '🎸 民谣就是生活本身的样子',
+            desc: '中国民谣音乐人，用简单的吉他和真挚的歌词，唱出每个普通人心中关于远方和故乡的故事。'
+        }
+    ];
+
+    // 查找注释占位符，替换为音乐内容
+    const blockquote = container.querySelector('blockquote');
+    if (blockquote && blockquote.nextElementSibling && blockquote.nextElementSibling.textContent.trim() === '') {
+        const placeholder = blockquote.nextElementSibling;
+        placeholder.remove();
+    }
+
+    // 生成音乐页 HTML
+    let html = '';
+
+    // 分类标签栏
+    const categories = ['全部', '华语', '欧美', '民谣', '日本', '韩国'];
+    html += '<div class="music-cat-bar">';
+    categories.forEach((cat, i) => {
+        const active = i === 0 ? ' active' : '';
+        html += `<span class="mcat-tag${active}" data-mcat="${cat}">${cat}</span>`;
+    });
+    html += '</div>';
+
+    // 歌手卡片网格
+    html += '<div class="music-singer-grid">';
+    singers.forEach((s, i) => {
+        const songListHTML = s.songs.map(song =>
+            `<div class="msong-item" data-song="${song}">
+                <span class="material-icons msong-icon">play_circle_outline</span>
+                <span class="msong-name">${song}</span>
+            </div>`
+        ).join('');
+
+        html += `
+        <div class="music-singer-card" data-idx="${i}">
+            <div class="msc-header">
+                <div class="msc-avatar-wrap">
+                    <img src="${s.avatar}" alt="${s.name}" class="msc-avatar" loading="lazy">
+                    <div class="msc-play-btn">
+                        <span class="material-icons">play_arrow</span>
+                    </div>
+                </div>
+                <div class="msc-info">
+                    <h3 class="msc-name">${s.name}</h3>
+                    <p class="msc-en">${s.en}</p>
+                    <div class="msc-tags">
+                        ${s.tags.map(t => `<span class="msc-tag">${t}</span>`).join('')}
+                    </div>
+                </div>
+            </div>
+            <div class="msc-mood">${s.mood}</div>
+            <p class="msc-desc">${s.desc}</p>
+            <div class="msc-songs">
+                <div class="msc-songs-title">
+                    <span class="material-icons" style="font-size:14px;vertical-align:middle;margin-right:4px;">queue_music</span>
+                    代表曲目
+                </div>
+                ${songListHTML}
+            </div>
+        </div>`;
+    });
+    html += '</div>';
+
+    // 底部小黑手绘风格装饰
+    html += `
+    <div class="music-footer-note">
+        <span class="sketch-note" style="color:var(--ared);">🎵 更多歌手，持续更新中...</span>
+        <br><span style="font-size:0.72rem;color:var(--light-muted);">耳机一戴，世界与我无关。</span>
+    </div>`;
+
+    container.innerHTML += html;
+
+    // 绑定分类标签点击
+    container.querySelectorAll('.mcat-tag').forEach(tag => {
+        tag.addEventListener('click', () => {
+            container.querySelectorAll('.mcat-tag').forEach(t => t.classList.remove('active'));
+            tag.classList.add('active');
+            // 简单过滤动画
+            container.querySelectorAll('.music-singer-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 150);
+            });
+        });
+    });
+
+    // 绑定歌曲点击效果
+    container.querySelectorAll('.msong-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const icon = item.querySelector('.msong-icon');
+            const wasPlaying = icon.textContent === 'pause_circle_outline';
+            // 重置所有
+            container.querySelectorAll('.msong-icon').forEach(ic => {
+                ic.textContent = 'play_circle_outline';
+                ic.closest('.msong-item').classList.remove('playing');
+            });
+            if (!wasPlaying) {
+                icon.textContent = 'pause_circle_outline';
+                item.classList.add('playing');
+            }
+        });
+    });
+}
+
+/* ═══════════ 主题管理 ═══════════ */
 const ThemeManager = {
     btn: document.getElementById('theme-toggle'),
     icon: document.getElementById('theme-icon'),
