@@ -1,5 +1,13 @@
 [
     {
+        "id": "cpp-protection",
+        "created": "2026-06-28",
+        "modified": "2026-06-28",
+        "title": "C++ 数据保护与共享（命名空间·静态成员·友元·const）",
+        "author": "haki",
+        "tags": ["C++", "命名空间", "静态成员", "友元", "const", "学习笔记"]
+    },
+    {
         "id": "cpp-array-pointer",
         "created": "2026-06-27",
         "modified": "2026-06-27",
