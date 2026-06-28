@@ -277,7 +277,7 @@ body.dark-mode .music-singer-card:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 body.dark-mode .msc-avatar-wrap { border-color: #30363d; }
-.msc-avatar { width: 100%; height: 100%; object-fit: cover; display: block; }
+.msc-avatar { width: 100%; height: 100%; object-fit: cover; display: block; object-position: center top; }
 .msc-play-btn {
   position: absolute; bottom: 2px; right: 2px;
   width: 30px; height: 30px; border-radius: 50%;

@@ -362,7 +362,7 @@ function renderMusicPage(container) {
     const singers = [
         {
             name: '孙燕姿', en: 'Stefanie Sun', type: '华语女歌手',
-            avatar: imgs['singer-stefanie'],
+            avatar: './assets/images/stefanie-portrait.jpg',
             tags: ['华语', '女歌手', '流行'],
             songs: ['天黑黑', '遇见', '绿光', '开始懂了', '逆光'],
             mood: '🎧 听燕姿的歌，像在经历一场温柔的暴雨',
@@ -370,7 +370,7 @@ function renderMusicPage(container) {
         },
         {
             name: '林俊杰', en: 'JJ Lin', type: '华语男歌手',
-            avatar: imgs['singer-jj'],
+            avatar: './assets/images/jj-album.jpg',
             tags: ['华语', '男歌手', '流行'],
             songs: ['江南', '修炼爱情', '她说', '可惜没如果', '不为谁而作的歌'],
             mood: '🎹 JJ的每一首歌都是一个小宇宙',
@@ -378,7 +378,7 @@ function renderMusicPage(container) {
         },
         {
             name: '赵雷', en: 'Zhao Lei', type: '民谣歌手',
-            avatar: imgs['singer-zhao'],
+            avatar: './assets/images/zhao-chengdu.jpg',
             tags: ['华语', '民谣', '创作'],
             songs: ['成都', '南方姑娘', '画', '理想', '鼓楼'],
             mood: '🎸 民谣就是生活本身的样子',
