@@ -371,8 +371,8 @@ function renderMusicPage(container) {
         },
         {
             name: '林俊杰', en: 'JJ Lin', type: '华语男歌手',
-            avatar: './assets/images/jj-album.jpg',
-            banner: './assets/images/jj-album.jpg',
+            avatar: './assets/images/jj-real.webp',
+            banner: './assets/images/jj-real.webp',
             tags: ['华语', '男歌手', '流行'],
             songs: ['江南', '修炼爱情', '她说', '可惜没如果', '不为谁而作的歌'],
             mood: '🎹 JJ的每一首歌都是一个小宇宙',
