@@ -362,8 +362,8 @@ function renderMusicPage(container) {
     const singers = [
         {
             name: '孙燕姿', en: 'Stefanie Sun', type: '华语女歌手',
-            avatar: './assets/images/stefanie-portrait(1).jpg',
-            banner: './assets/images/stefanie-portrait(1).jpg',
+            avatar: './assets/images/stefanie-real.webp',
+            banner: './assets/images/stefanie-real.webp',
             tags: ['华语', '女歌手', '流行'],
             songs: ['天黑黑', '遇见', '绿光', '开始懂了', '逆光'],
             mood: '🎧 听燕姿的歌，像在经历一场温柔的暴雨',
