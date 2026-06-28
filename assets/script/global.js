@@ -358,11 +358,12 @@ function renderPathNav(displayPath) {
 function renderMusicPage(container) {
     const imgs = I();
 
-    // 歌手数据
+    // 歌手数据（avatar=圆形头像, banner=顶部横幅背景）
     const singers = [
         {
             name: '孙燕姿', en: 'Stefanie Sun', type: '华语女歌手',
-            avatar: './assets/images/stefanie-portrait.jpg',
+            avatar: './assets/images/stefanie-portrait(1).jpg',
+            banner: './assets/images/stefanie-portrait(1).jpg',
             tags: ['华语', '女歌手', '流行'],
             songs: ['天黑黑', '遇见', '绿光', '开始懂了', '逆光'],
             mood: '🎧 听燕姿的歌，像在经历一场温柔的暴雨',
@@ -371,6 +372,7 @@ function renderMusicPage(container) {
         {
             name: '林俊杰', en: 'JJ Lin', type: '华语男歌手',
             avatar: './assets/images/jj-album.jpg',
+            banner: './assets/images/jj-album.jpg',
             tags: ['华语', '男歌手', '流行'],
             songs: ['江南', '修炼爱情', '她说', '可惜没如果', '不为谁而作的歌'],
             mood: '🎹 JJ的每一首歌都是一个小宇宙',
@@ -379,6 +381,7 @@ function renderMusicPage(container) {
         {
             name: '赵雷', en: 'Zhao Lei', type: '民谣歌手',
             avatar: './assets/images/zhao-chengdu.jpg',
+            banner: './assets/images/zhao-shuqian.jpg',
             tags: ['华语', '民谣', '创作'],
             songs: ['成都', '南方姑娘', '画', '理想', '鼓楼'],
             mood: '🎸 民谣就是生活本身的样子',
@@ -418,39 +421,45 @@ function renderMusicPage(container) {
         const catStr = s.tags.join(' ');
         html += `
         <div class="music-singer-card" data-idx="${i}" data-cats="${catStr}">
-            <div class="msc-header">
-                <div class="msc-avatar-wrap">
-                    <img src="${s.avatar}" alt="${s.name}" class="msc-avatar" loading="lazy">
-                    <div class="msc-play-btn">
-                        <span class="material-icons">play_arrow</span>
+            <div class="msc-banner">
+                <img src="${s.banner}" alt="${s.name}" class="msc-banner-img" loading="lazy">
+                <div class="msc-banner-overlay"></div>
+                <div class="msc-banner-content">
+                    <div class="msc-avatar-wrap">
+                        <img src="${s.avatar}" alt="${s.name}" class="msc-avatar" loading="lazy">
                     </div>
-                </div>
-                <div class="msc-info">
-                    <h3 class="msc-name">${s.name}</h3>
-                    <p class="msc-en">${s.en}</p>
-                    <div class="msc-tags">
-                        ${s.tags.map(t => `<span class="msc-tag">${t}</span>`).join('')}
+                    <div class="msc-info">
+                        <h3 class="msc-name">${s.name}</h3>
+                        <p class="msc-en">${s.en}</p>
+                        <div class="msc-tags">
+                            ${s.tags.map(t => `<span class="msc-tag">${t}</span>`).join('')}
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="msc-mood">${s.mood}</div>
-            <p class="msc-desc">${s.desc}</p>
-            <div class="msc-songs">
-                <div class="msc-songs-title">
-                    <span class="material-icons" style="font-size:14px;vertical-align:middle;margin-right:4px;">queue_music</span>
-                    代表曲目
+            <div class="msc-body">
+                <div class="msc-mood">${s.mood}</div>
+                <p class="msc-desc">${s.desc}</p>
+                <div class="msc-songs">
+                    <div class="msc-songs-title">
+                        <span class="material-icons" style="font-size:14px;vertical-align:middle;margin-right:4px;">queue_music</span>
+                        代表曲目
+                    </div>
+                    ${songListHTML}
                 </div>
-                ${songListHTML}
             </div>
         </div>`;
     });
     html += '</div>';
 
-    // 底部小黑手绘风格装饰
+    // 底部小黑手绘风格装饰 + 音乐主题大背景
     html += `
     <div class="music-footer-note">
         <span class="sketch-note" style="color:var(--ared);">🎵 更多歌手，持续更新中...</span>
         <br><span style="font-size:0.72rem;color:var(--light-muted);">耳机一戴，世界与我无关。</span>
+    </div>
+    <div class="music-bg-footer">
+        <img src="${imgs['music-bg'] || ''}" alt="音乐背景" loading="lazy">
     </div>`;
 
     container.innerHTML += html;
